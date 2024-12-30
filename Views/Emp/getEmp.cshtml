@@ -1,0 +1,67 @@
+@model EFApp.Models.EmpValidations1
+<style>
+    .top{
+        color: red;
+    }
+</style>
+@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <td>Empno </td>
+            <td>@Html.TextBoxFor(m => m.Empno)</td>
+            <td>@Html.ValidationMessageFor(m=>m.Empno,"",new{@class="top"})</td>
+        </tr>
+        <tr>
+            <td>Emp Name</td>
+            <td>@Html.TextBoxFor(m => m.Ename)</td>
+            <td>@Html.ValidationMessageFor(m=>m.Ename,"",new{@class="top"})</td>
+
+        </tr>
+        <tr>
+            <td>gender</td>
+            <td>@Html.DropDownListFor(m => m.Gender,  new List<SelectListItem>{
+            new SelectListItem {Value="Male", Text="Male"},
+            new SelectListItem {Value="Female", Text="Female"},
+            new SelectListItem {Value="Others", Text="Others"}
+
+            })
+            </td> 
+            <td>@Html.ValidationMessageFor(m=>m.Gender,"",new{@class="top"})</td>
+                @* <td>@Html.DropDownListFor(m=>m.Gender,new SelectList(Enum.GetValues(typeof(Gender))),"Select")</td> *@
+           
+        </tr>
+        <tr>
+            <td>Pancard</td>
+            <td>@Html.TextBoxFor(m=>m.Pancard)</td>
+            <td>@Html.ValidationMessageFor(m=>m.Pancard,"",new{@class="top"})</td>
+
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>@Html.TextBoxFor(m=>m.Email)</td>
+            <td>@Html.ValidationMessageFor(m=>m.Email,"",new{@class="top"})</td>
+
+        </tr>
+        <tr>
+            <td>DOB</td>
+            <td>@Html.TextBoxFor(m=>m.Dob,"{0:yyyy-MM-dd}",new {type="date"})</td>
+                        <td>@Html.ValidationMessageFor(m=>m.Dob,"",new{@class="top"})</td>
+
+        </tr>
+        <tr>
+            <td>DOJ</td>
+            <td>@Html.TextBoxFor(m=>m.Doj,"{0:yyyy-MM-dd}",new {type="date"})</td>
+                        <td>@Html.ValidationMessageFor(m=>m.Doj,"",new{@class="top"})</td>
+
+        </tr>
+        <tr>
+            <td>
+                <input type="submit">
+            </td>
+        </tr>
+    </table>
+    @if(ViewBag.msg != null){
+        @ViewBag.msg
+    }
+}

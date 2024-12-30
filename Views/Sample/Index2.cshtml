@@ -1,0 +1,22 @@
+@using (Html.BeginForm("Index3","Sample"))
+{
+    @* @if (ViewData["msg"] != null)
+    {
+        @foreach (var i in (List<int>)ViewData["msg"])
+        {
+            <h1>@i</h1>
+        }
+    }
+    else
+    {
+        <h1>
+            No Data
+        </h1>
+        } *@
+
+        
+        @ViewData["data"]
+        @TempData["data"]
+        <input type="submit">
+    
+}

@@ -1,0 +1,55 @@
+@model EFApp.Models.Product1
+@{
+    ViewData["Title"] = "Delete";
+}
+<script>
+    function Getdata() {
+        var p = document.getElementById("Id").value;
+    @* var Y=  confirm("Are you sure to delete");
+            alert(Y)*@
+var result = confirm("Are you sure you want to delete this item?"+p);
+
+        if (result ==true) {
+            window.location.href = "ExtractProduct?Id=" + p;
+            alert("one row deleted successfully!")
+        } else {
+            alert("No row Deleted.")
+        }
+
+        
+    }
+</script>
+@using (Html.BeginForm("Delete","Product"))
+{
+    <table>
+        <tr>
+            <td>ProductId</td>
+            <td>@Html.TextBoxFor(a => a.Id, new { onblur = "Getdata()" })</td>
+        </tr>
+        <tr>
+            <td>Product Name</td>
+            <td>@Html.TextBoxFor(a => a.ProductName)</td>
+        </tr>
+        <tr>
+            <td>Date of Manufacture</td>
+            <td>@Html.TextBoxFor(a => a.Dom, "{0:yyyy-MM-dd}", new { @type = "date" })</td>
+        </tr>
+        <tr>
+            <td>Product Price</td>
+            <td>@Html.TextBoxFor(a => a.Price)</td>
+        </tr>
+        <tr>
+            <td>
+                @* <input type="Submit" value="Update"> *@
+
+                <input type="Submit" value="Update" formaction="Product/Update">
+                <input type="Submit" value="Delete" formaction="Product/Delete">
+
+            </td>
+        </tr>
+    </table>
+    @if (ViewBag.msg != null)
+    {
+        @ViewBag.msg
+    }
+}

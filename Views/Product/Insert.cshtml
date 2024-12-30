@@ -1,0 +1,46 @@
+@model EFApp.Models.Product1
+@{
+    ViewData["title"] = " Insert Product";
+}
+@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <td>ProductId</td>
+            <td>@Html.TextBoxFor(a => a.Id)</td>
+        </tr>
+        <tr>
+            <td>Product Name</td>
+            <td>@Html.TextBoxFor(a => a.ProductName)</td>
+        </tr>
+        <tr>
+            <td>Date of Manufacture</td>
+            <td>@Html.TextBoxFor(a => a.Dom,new {@type="date"})</td>
+        </tr>
+        <tr>
+            <td>Product Price</td>
+            <td>@Html.TextBoxFor(a => a.Price)</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="Submit">
+            </td>
+        </tr>
+    </table>
+    @if(ViewBag.msg!=null){
+        @ViewBag.msg
+    }
+    @if(ViewBag.plist != null){
+        <table>
+        @foreach(var p in ViewBag.plist){
+            <tr>
+                <td>@p.Id</td>
+                <td>@p.ProductName</td>
+                <td>@p.Dom</td>
+                <td>@p.Price</td>
+            </tr>
+        }
+        </table>
+    }
+
+}

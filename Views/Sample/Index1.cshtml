@@ -1,0 +1,19 @@
+@using (Html.BeginForm("Index3","Sample"))
+{
+    @* @if (ViewBag.msg != null)
+    {
+
+        @foreach (var i in ViewBag.msg)
+        {
+            <h1>@i</h1>
+        }
+    }
+    else
+    {
+        <h2>No Data</h2>
+    } *@
+    @ViewData["vdata"]
+    @ViewBag.data
+    @TempData["tdata"]
+    <input type="submit">
+}
